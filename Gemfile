@@ -13,11 +13,12 @@ gem 'devise'
 gem 'activeadmin'
 gem 'ransack'
 gem 'appointment_validation', path: 'gems/appointment_validation'
+
 group :development, :test do
-gem 'pry'
-gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
-gem 'byebug'
-gem 'rspec-rails'
+  gem 'pry'
+  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+  gem 'byebug'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -31,7 +32,6 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
-  gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'database_cleaner-active_record'
 end
