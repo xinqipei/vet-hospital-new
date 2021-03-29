@@ -1,0 +1,21 @@
+<nav>
+    <div class="navigation">
+        <% if user_signed_in? %>
+        <div class="nav-links">
+          <%= link_to t('navbar.home'), root_path %>
+            <%= link_to t('navbar.pet_details'), pets_path %>
+            <%= link_to t('navbar.pet_owner'), profiles_path %>
+            <%= link_to t('navbar.add_pet_owner'), new_profile_path %>
+            <%= link_to 'ENG', '?lang=en' %>
+            <%= link_to 'DE', '?lang=de' %>
+        </div>
+        <% end %>
+        <% if user_signed_in? %>
+        <div class="user-login">
+            <%= t('navbar.welcome', name: current_user.full_name) %>
+            <%= link_to t('navbar.log_out'), destroy_user_session_path, method: :delete, class:"logout"%>
+        </div>
+        <% end %>
+
+    </div>
+</nav>

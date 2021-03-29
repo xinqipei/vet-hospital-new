@@ -1,0 +1,41 @@
+<span class="doctor-show-header"><h1>Pet Record List</h1><h3>Number of Records <%= @pets.count %></h3></span>
+
+<%= link_to 'Create Record', new_pet_path, class: "ui button purple inverted" %>
+<br/>
+<br/>
+<hr/>
+<br>
+<%= search_form_for @pets_search, { onchange: 'this.form.submit();' } do |f| %>
+  <div class="input-group">
+    <div class="form-outline">
+      <%= f.search_field :name_or_age_cont, placeholder: 'Start typing to search...', id: 'form1', class: 'form-control' %>
+    </div>
+  </div>
+<% end %>
+
+<table class="ui selectable celled striped table padded">
+  <thead>
+  <th class="center aligned">Pet Name</th>
+  <th class="center aligned">Age</th>
+  <th class="center aligned">Medical History</th>
+  <th class="center aligned">Appointments</th>
+  <th class="center aligned">Show</th>
+  <th class="center aligned">Edit</th>
+  <th class="center aligned">Remove</th>
+  </thead>
+  <tbody>
+  <% @pets.each do |pet| %>
+    <tr>
+      <td><%= link_to pet.name, pet_appointments_path(pet), class: "ui basic button" %></td>
+      <td><%= pet.age %></td>
+      <td><%= pet.medical_history %></td>
+      <td><%= pet.appointments.count %></td>
+      <td><%= button_to 'Show', pet_path(pet), class: "ui button purple inverted" %></td>
+
+      <td><%= button_to 'Edit', edit_pet_path(pet), class: "ui button purple inverted" %></td>
+      <td><%= button_to 'Remove', { :controller => :pets, :action => 'destroy', :id => pet.id }, :method => :delete, class: "ui button purple inverted" %></td>
+    </tr>
+  <% end %>
+  </tbody>
+
+</table>

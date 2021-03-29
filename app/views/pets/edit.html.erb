@@ -1,0 +1,20 @@
+<h1>Editing Pet</h1>
+<div class="form-container">
+  <h1>Add Pet Details(Add Pet)</h1>
+  <%= form_with(model: @pet, local: true, class: "ui form" ) do |f| %>
+    <div class="field">
+      <%= f.label :name%>
+      <%= f.text_field :name, required: true, placeholder: "Pet Name" %>
+    </div>
+    <div class="field">
+      <%= f.label :age %>
+      <%= f.text_field :age, required: true, placeholder: "age" %>
+    </div>
+    <div class="field">
+      <%= f.label :medical_history %>
+      <%= f.text_field :medical_history, required: true, placeholder: "Medical History" %>
+    </div>
+
+    <%= f.submit 'Update Record', class: "ui purple button inverted" %>
+  <% end %>
+</div>

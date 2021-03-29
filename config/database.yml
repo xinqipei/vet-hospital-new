@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  pool: 5
+
+development:
+  <<: *default
+  database: pets_appointments_development
+
+test:
+  <<: *default
+  database: pets_appointments_test
+
+production:
+  <<: *default
+  database: pets_appointments_production

@@ -1,0 +1,21 @@
+<h1>Show Pet Details</h1>
+<table class="ui selectable celled striped table padded">
+  <thead>
+    <th class="center aligned">Pet Name</th>
+    <th class="center aligned">Age</th>
+      <th class="center aligned">Medical History</th>
+    <th class="center aligned">Appointments</th>
+  </thead>
+  <tbody>
+
+      <tr>
+  <td><%= link_to @pet.name, pet_appointments_path(@pet), class: "ui basic button" %></td>
+        <td><%= @pet.age %></td>
+        <td><%= @pet.medical_history %></td>
+        <td><%= @pet.appointments.count %></td>
+
+      </tr>
+
+  </tbody>
+
+</table>

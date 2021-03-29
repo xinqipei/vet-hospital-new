@@ -1,0 +1,33 @@
+<span class="doctor-show-header"><h1>Owner Profile Records</h1><h3>Number of Owner:  <%= @profiles.count %></h3></span>
+<%= link_to 'Add Owner Profile', new_profile_path, class:"ui button purple inverted"%>
+<br />
+<br />
+<hr />
+
+<table class="ui celled table selectable striped padded">
+  <thead>
+    <th class="center aligned">Owner Name</th>
+    <th class="center aligned">Date of Birth</th>
+    <th class="center aligned">Sex</th>
+    <th class="center aligned">Phone</th>
+    <th class="center aligned">City</th>
+    <th class="center aligned">Preferred Language</th>
+    <th class="center aligned">Edit</th>
+    <th class="center aligned">Remove</th>
+  </thead>
+  <tbody>
+    <% @profiles.each do |profile| %>
+      <tr>
+        <td><%= link_to profile.full_name, profile_path(profile), class: "ui basic button" %></td>
+        <td><%= profile.dob.strftime('%m/%d/%Y') %></td>
+        <td><%= profile.sex == "Male" ? "M" : "F" %></td>
+        <td><%= profile.phone %></td>
+        <td><%= profile.city %></td>
+        <td><%= profile.language %></td>
+        <td><%= button_to 'Edit', edit_profile_path(profile),class:"ui button purple inverted" %></td>
+        <td><%= button_to 'Remove', { :controller => :profiles, :action => 'destroy', :id => profile.id }, :method => :delete, class:"ui button purple inverted" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

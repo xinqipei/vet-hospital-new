@@ -1,0 +1,27 @@
+<span class="doctor-show-header"><h1><%= @pet.name %> Appointments</h1></span>
+
+<%= link_to 'Add Appointment', new_pet_appointment_path(@pet), class:"ui button blue inverted" %>
+<br />
+<br />
+<hr />
+
+
+<table class="ui celled table">
+  <thead>
+    <th>Owner Name</th>
+    <th>Appointment Date</th>
+    <th>Appointment Time</th>
+    <th>Remove</th>
+  </thead>
+  <tbody>
+    <% @appointments.each do |appt| %>
+      <tr>
+        <td><%= link_to appt.profile.full_name, profile_path(appt.profile), class: "ui basic button"%></td>
+        <td><%= appt.date.strftime('%a, %b %d, %Y') if appt.date.present? %></td>
+        <td><%= appt.time.strftime("%l:%M %p") if appt.time.present?  %></td>
+        <td><%= button_to 'Cancel', pet_appointment_path(appt.pet_id, appt.id), method: :delete, class:"ui button red inverted" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

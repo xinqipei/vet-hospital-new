@@ -1,0 +1,8 @@
+de:
+  navbar:
+    home: "Zuhause"
+    pet_details: "Tierdetailaufzeichnungen"
+    pet_owner: "Tierhalter Profil"
+    add_pet_owner: "Profil des Haustierbesitzers hinzufügen (Profil hinzufügen)"
+    welcome: "Herzlich willkommen %{name}"
+    log_out: "Ausloggen"

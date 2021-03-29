@@ -1,0 +1,101 @@
+<h1><%= @profile.full_name%></h1>
+<h2 class="ui center aligned blue header">Owner Information</h2>
+<table class="ui definition table user-info selectable">
+<tr>
+    <td>First Name:</td>
+    <td><%= @profile.first_name %></td>
+</tr>
+<tr>
+    <td>Last Name:</td>
+    <td><%= @profile.last_name %></td>
+</tr>
+
+<tr>
+    <td>Date of Birth:</td>
+    <td><%= @profile.dob.strftime('%m / %d / %Y') %></td>
+</tr>
+<tr>
+    <td>Sex:</td>
+    <td><%= @profile.sex %></td>
+</tr>
+<tr>
+    <td>Phone:</td>
+    <td><%= @profile.phone %></td>
+</tr>
+<tr>
+    <td>Street:</td>
+    <td><%= @profile.street %></td>
+</tr>
+<tr>
+    <td>City:</td>
+    <td><%= @profile.city %></td>
+</tr>
+
+<tr>
+    <td>Preffered Language:</td>
+    <td><%= @profile.language %></td>
+</tr>
+<tr>
+    <td>Remove Profile:</td>
+    <td><%= button_to 'Delete', { :controller => :profiles, :action => 'destroy', :id => @profile }, :method => :delete, class:"ui button red inverted" %></td>
+</tr>
+</table>
+<br />
+<br />
+
+<h2 class="ui center aligned blue header">Scheduled Appointments</h2>
+
+    <table class="ui table striped selectable">
+        <thead>
+            <tr>
+                <th>Pet Name</th>
+                <th>Age</th>
+                <th>Medical History</th>
+                <th>Date</th>
+                <th>Time</th></th>
+                <th>Cancel</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @appointments.each_with_index do |appt,i| %>
+                <tr>
+                    <td><%= link_to appt.pet.name, pet_appointments_path(appt.pet),class:"ui button basic" %></td>
+                    <td><%= appt.pet.age %></td>
+                    <td><%= appt.pet.medical_history %></td>
+                    <td><%= appt.date.strftime('%a, %b %d, %Y') %></td>
+                    <td><%= appt.time.strftime("%l:%M %p") %></td>
+                    <td><%= button_to 'Cancel', pet_appointment_path(appt.pet_id, appt.id), method: :delete, class:"ui button red inverted" %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+
+<div class="notes-container">
+    <h2 class="ui center aligned blue header"> Doctor Notes</h2>
+    <p><%= @notes.length <= 0 ? "No profile notes found": ""%></p>
+
+    <% @notes.each do |note|  %>
+        <div class="note">
+            <p class="message-body"><%= note.message %></p>
+            <div class="poster-info">
+              
+                <%= note.created_at.strftime("%b %d, %Y") %>
+                <br />
+                <%= note.created_at.in_time_zone("Central Time (US & Canada)").strftime("%l:%M %p") %>
+            </div>
+            <div class="note-actions">
+                <%= link_to edit_profile_note_path(note.profile_id, note), :edit => 'go' do %>
+                    <i class="edit outline icon"></i>
+                <% end %>
+                <%= button_to profile_note_path(note.profile, note), method: :delete do %>
+                    <i class="trash alternate icon trash"></i>
+                <% end %>
+
+            </div>
+
+        </div>
+    <% end %>
+    <%#= link_to "Add Note", new_profile_note_path(@profile), class:"ui button blue" %>
+
+</div>
