@@ -1,5 +1,5 @@
 require 'rails_helper'
-# functional test cases
+
 # with the appointment, before make an appontment, we need to create an user and make sure user is signed in
 
 RSpec.describe "Appointments", type: :request do
