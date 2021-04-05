@@ -3,8 +3,8 @@ Gem::Specification.new do |s|
   s.version = '0.1.0'
   s.date = '2021-03-26'
   s.summary = 'Appointments validations'
-  s.author = 'My name'
-  s.email = 'my@email.com'
+  s.author = 'XinqiPei'
+  s.email = 'xinqipei@gmail.com'
   s.files = [
     'lib/appointment_validation.rb',
     'lib/appointment_validation/activerecord.rb',
