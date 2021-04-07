@@ -13,6 +13,8 @@ gem 'devise'
 gem 'activeadmin'
 gem 'ransack'
 gem 'appointment_validation', path: 'gems/appointment_validation'
+gem 'virtus'
+gem 'draper'
 
 group :development, :test do
   gem 'pry'

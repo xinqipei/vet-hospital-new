@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_26_230410) do
+ActiveRecord::Schema.define(version: 23) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_230410) do
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
-# create appointments table
+
   create_table "appointments", force: :cascade do |t|
     t.bigint "profile_id"
     t.bigint "pet_id"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_230410) do
     t.index ["pet_id"], name: "index_appointments_on_pet_id"
     t.index ["profile_id"], name: "index_appointments_on_profile_id"
   end
-# create notes table
+
   create_table "notes", force: :cascade do |t|
     t.text "message"
     t.bigint "user_id"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_230410) do
     t.index ["profile_id"], name: "index_notes_on_profile_id"
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
-# create pet table
+
   create_table "pets", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_230410) do
     t.string "phone"
     t.integer "user_id"
   end
-# create profiles table
+
   create_table "profiles", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"

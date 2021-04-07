@@ -19,8 +19,8 @@
     <% @profiles.each do |profile| %>
       <tr>
         <td><%= link_to profile.full_name, profile_path(profile), class: "ui basic button" %></td>
-        <td><%= profile.dob.strftime('%m/%d/%Y') %></td>
-        <td><%= profile.sex == "Male" ? "M" : "F" %></td>
+        <td><%= profile.formatted_dob %></td>
+        <td><%= profile.gender %></td>
         <td><%= profile.phone %></td>
         <td><%= profile.city %></td>
         <td><%= profile.language %></td>

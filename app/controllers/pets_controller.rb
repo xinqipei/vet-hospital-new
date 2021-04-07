@@ -25,14 +25,12 @@ class PetsController < ApplicationController
   end
 
   def create
-
-    @pet = Pet.new(pet_params)
-
-    if @pet.save
-      redirect_to pets_path
-    else
-      render :new
-    end
+    @pet_form = PetForm.new(pet_params)
+      if @pet_form.persist
+        redirect_to pets_path
+      else
+        redirect_to new_pet_path
+      end
   end
 
   def destroy

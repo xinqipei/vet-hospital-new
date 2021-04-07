@@ -9,7 +9,7 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    @profile = @appointment.profile.find(params[:id])
+    @profile = @appointment.profile.find(params[:id]).decorate
     @pet = @appointment.pet.find(params[:pet_id])
   end
 

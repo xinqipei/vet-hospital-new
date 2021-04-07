@@ -2,7 +2,7 @@ class NotesController < ApplicationController
 
   before_action :set_note, only: [:edit, :update, :destroy]
   before_action :set_profile
-  
+
   def index
     @notes = @profile.notes.order("created_at")
   end
@@ -48,11 +48,10 @@ class NotesController < ApplicationController
     end
 
     def set_profile
-      @profile = Profile.find(params[:profile_id])
+      @profile = Profile.find(params[:profile_id]).decorate
     end
 
     def note_params
       params.require(:note).permit(:message, :user_id)
     end
 end
-

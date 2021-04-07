@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
 
   before_action :set_profile, only: [:show,:destroy,:edit, :update]
   def index
-    @profiles = current_user.profiles.all
+    @profiles = current_user.profiles.all.decorate
   end
 
   def show
@@ -26,13 +26,11 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    @profile = Profile.new(profile_params)
-    if @profile.save
-      age = Date.today.year - @profile.dob.year
-      @profile.update(age: age)
-      redirect_to @profile
+    @profile_form = ProfileForm.new(profile_params)
+    if @profile_form.persist
+      redirect_to @profile_form.record
     else
-      render :new
+      redirect_to new_profile_path
     end
   end
 
@@ -43,7 +41,7 @@ class ProfilesController < ApplicationController
 
   private
     def set_profile
-      @profile = Profile.find(params[:id])
+      @profile = Profile.find(params[:id]).decorate
     end
 
     def profile_params

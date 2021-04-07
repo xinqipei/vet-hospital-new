@@ -12,7 +12,7 @@
 
 <tr>
     <td>Date of Birth:</td>
-    <td><%= @profile.dob.strftime('%m / %d / %Y') %></td>
+    <td><%= @profile.formatted_dob %></td>
 </tr>
 <tr>
     <td>Sex:</td>
@@ -79,7 +79,7 @@
         <div class="note">
             <p class="message-body"><%= note.message %></p>
             <div class="poster-info">
-              
+
                 <%= note.created_at.strftime("%b %d, %Y") %>
                 <br />
                 <%= note.created_at.in_time_zone("Central Time (US & Canada)").strftime("%l:%M %p") %>

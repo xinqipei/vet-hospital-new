@@ -14,11 +14,11 @@
     <th>Remove</th>
   </thead>
   <tbody>
-    <% @appointments.each do |appt| %>
+    <% @appointments.decorate.each do |appt| %>
       <tr>
-        <td><%= link_to appt.profile.full_name, profile_path(appt.profile), class: "ui basic button"%></td>
-        <td><%= appt.date.strftime('%a, %b %d, %Y') if appt.date.present? %></td>
-        <td><%= appt.time.strftime("%l:%M %p") if appt.time.present?  %></td>
+        <td><%= link_to appt.profile.decorate.full_name, profile_path(appt.profile), class: "ui basic button"%></td>
+        <td><%= appt.formatted_date if appt.date.present? %></td>
+        <td><%= appt.formatted_time if appt.time.present?  %></td>
         <td><%= button_to 'Cancel', pet_appointment_path(appt.pet_id, appt.id), method: :delete, class:"ui button red inverted" %></td>
       </tr>
     <% end %>
